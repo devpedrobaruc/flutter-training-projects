@@ -12,16 +12,28 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
 
-    return Container(
+    return Scaffold(
+      body: Container(
         padding: EdgeInsets.only(
             top: media.viewPadding.top, bottom: media.viewPadding.bottom),
         child: Stack(
           children: <Widget>[
             ListView(
-              padding: const EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 60),
               children: <Widget>[
+                Center(
+                  child: Image.network(
+                    _logoUrl,
+                    fit: BoxFit.contain,
+                    width: media.size.width / 1.2,
+                  ),
+                ),
                 _section(
                   title: 'Séries',
+                  width: media.size.width,
+                ),
+                _section(
+                  title: 'Filmes',
                   width: media.size.width,
                 ),
                 _section(
@@ -29,19 +41,15 @@ class HomeScreen extends StatelessWidget {
                   width: media.size.width,
                 ),
                 _section(
-                  title: 'Séries',
+                  title: 'Ficção científica',
                   width: media.size.width,
                 ),
                 _section(
-                  title: 'Séries',
+                  title: 'Ação',
                   width: media.size.width,
                 ),
                 _section(
-                  title: 'Séries',
-                  width: media.size.width,
-                ),
-                _section(
-                  title: 'Séries',
+                  title: 'Drama',
                   width: media.size.width,
                 ),
               ],
@@ -75,7 +83,9 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _section({String title = '', double width = 10}) {
